@@ -114,7 +114,9 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold,underlin
 
 # Editor
 export EDITOR="vim"
-export VISUAL="neovim-qt"
+export VISUAL="nvim-gtk"
+
+alias gvim=$VISUAL
 
 # Open with
 alias -s ."*"=open
