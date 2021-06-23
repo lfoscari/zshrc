@@ -5,13 +5,15 @@
 # |___|___|
 #
 
-## Prompt
+# ---------------------------------
+# Prompt
 
-export PROMPT="%F{blue}%2~%f → "
+export PROMPT="%F{blue}%2~%f %(#.#.→) "
 export RPROMPT="%F{red}%(?..ಠ_ಠ)%f"
 
 
-## Shell options
+# ---------------------------------
+# Shell options
 
 # Enable command correction
 # setopt CORRECT
@@ -20,7 +22,8 @@ export RPROMPT="%F{red}%(?..ಠ_ಠ)%f"
 # setopt CORRECT_ALL
 
 
-## Command History
+# ---------------------------------
+# Command History
 
 # History file
 HISTFILE=$ZDOTDIR/zsh_history
@@ -53,7 +56,8 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
 
-## Directory history
+# ---------------------------------
+# Directory history
 
 # Do not store duplicates in the stack
 setopt PUSHD_IGNORE_DUPS
@@ -69,7 +73,8 @@ alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 
-## Autocompletion
+# ---------------------------------
+# Autocompletion
 
 # Instead of listing completions, fill with first too
 setopt MENU_COMPLETE
@@ -90,7 +95,8 @@ autoload -Uz compinit
 compinit
 
 
-## Plugins
+# ---------------------------------
+# Plugins
 
 # Autosuggestions
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -110,13 +116,15 @@ bindkey '^[[B' history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold,underline"
 
 
-## MISC
+# ---------------------------------
+# MISC
 
 # Editor
-export EDITOR="vim"
+export EDITOR="nvim"
 export VISUAL="nvim-gtk"
 
-alias gvim=$VISUAL
+alias gvim="$VISUAL"
+alias vim="$EDITOR"
 
 # Open with
 alias -s ."*"=open
@@ -131,7 +139,8 @@ alias l="ls -la"
 # Utils
 alias :q="exit"
 alias zshrc="vim $ZDOTDIR/.zshrc"
+alias unimi="cd /home/gg/Dropbox/unimi/appunti-unimi/Luigi/Magistrale"
 
 # OCaML
-eval $(opam env)
+test -r /home/gg/.opam/opam-init/init.zsh && . /home/gg/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 alias ocaml="rlwrap ocaml"
