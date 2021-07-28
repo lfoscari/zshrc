@@ -144,3 +144,6 @@ alias unimi="cd /home/gg/Dropbox/unimi/appunti-unimi/Luigi/Magistrale"
 # OCaML
 test -r /home/gg/.opam/opam-init/init.zsh && . /home/gg/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 alias ocaml="rlwrap ocaml"
+
+# Composer
+export PATH=$HOME/.config/composer/vendor/bin:$PATH
