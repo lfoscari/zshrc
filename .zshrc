@@ -8,8 +8,8 @@
 # ---------------------------------
 # Prompt
 
-export PROMPT="%F{blue}%2~%f %(#.#.→) "
-export RPROMPT="%F{red}%(?..ಠ_ಠ)%f"
+export PROMPT="%F{cyan}%2~%f %(#.#.→) "
+# export RPROMPT="%F{red}%(?..ಠ_ಠ)%f"
 
 
 # ---------------------------------
@@ -121,10 +121,13 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold,underlin
 
 # Editor
 export EDITOR="nvim"
-export VISUAL="nvim-gtk"
 
-alias gvim="$VISUAL"
 alias vim="$EDITOR"
+
+# Autoremove in arch
+autoremove() {
+	sudo pacman -R $(pacman -Qdtq)
+}
 
 # Open with
 alias -s ."*"=open
@@ -139,11 +142,14 @@ alias l="ls -la"
 # Utils
 alias :q="exit"
 alias zshrc="vim $ZDOTDIR/.zshrc"
-alias unimi="cd /home/gg/Dropbox/unimi/appunti-unimi/Luigi/Magistrale"
+alias unimi="cd /home/gg/Dropbox/Università/Appunti/Magistrale"
 
-# OCaML
-test -r /home/gg/.opam/opam-init/init.zsh && . /home/gg/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-alias ocaml="rlwrap ocaml"
+# Laravel sail
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
-# Composer
-export PATH=$HOME/.config/composer/vendor/bin:$PATH
+# # OCaML
+# test -r /home/gg/.opam/opam-init/init.zsh && . /home/gg/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# alias ocaml="rlwrap ocaml"
+
+# # Composer
+# export PATH=$HOME/.config/composer/vendor/bin:$PATH
