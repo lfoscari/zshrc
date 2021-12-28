@@ -121,13 +121,12 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold,underlin
 
 # Editor
 export EDITOR="nvim"
-
 alias vim="$EDITOR"
 
 # Autoremove in arch
-autoremove() {
-	sudo pacman -R $(pacman -Qdtq)
-}
+# autoremove() {
+# 	sudo pacman -R $(pacman -Qdtq)
+# }
 
 # Open with
 alias -s ."*"=open
@@ -145,7 +144,7 @@ alias zshrc="vim $ZDOTDIR/.zshrc"
 alias unimi="cd /home/gg/Dropbox/Università/Appunti/Magistrale"
 
 # Laravel sail
-alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+# alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 # # OCaML
 # test -r /home/gg/.opam/opam-init/init.zsh && . /home/gg/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
