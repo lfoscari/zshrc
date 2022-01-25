@@ -9,7 +9,7 @@
 # Prompt
 
 export PROMPT="%F{cyan}%2~%f %(#.#.→) "
-# export RPROMPT="%F{red}%(?..ಠ_ಠ)%f"
+export RPROMPT="%F{red}%(?..ಠ_ಠ)%f"
 
 
 # ---------------------------------
@@ -120,8 +120,6 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold,underlin
 # MISC
 
 # Editor
-export EDITOR="nvim"
-
 alias vim="$EDITOR"
 
 # Autoremove in arch
@@ -137,9 +135,14 @@ alias -s git="git clone"
 
 # ls settings
 export CLICOLOR=1
+alias ls="exa"
 alias l="ls -la"
 
 # Utils
+alias man="tldr"
+alias df="duf"
+alias open="xdg-open"
+alias tree="exa -T"
 alias :q="exit"
 alias zshrc="vim $ZDOTDIR/.zshrc"
 alias unimi="cd /home/gg/Dropbox/Università/Appunti/Magistrale"
