@@ -8,9 +8,12 @@
 # ---------------------------------
 # Prompt
 
-export PROMPT="%F{cyan}%2~%f %(#.#.→) "
-export RPROMPT="%F{red}%(?..ಠ_ಠ)%f"
-
+if [[ ${SSH_TTY} ]] ; then
+	export PROMPT="(ssh) %F{cyan}%2~%f %(#.#.→) "
+else
+	export PROMPT="%F{cyan}%2~%f %(#.#.→) "
+	export RPROMPT="%F{red}%(?..ಠ_ಠ)%f"
+fi
 
 # ---------------------------------
 # Shell options
@@ -123,11 +126,6 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold,underlin
 export EDITOR="nvim"
 alias vim="$EDITOR"
 
-# Autoremove in arch
-# autoremove() {
-# 	sudo pacman -R $(pacman -Qdtq)
-# }
-
 # Open with
 alias -s ."*"=open
 
@@ -140,20 +138,8 @@ alias ls="exa"
 alias l="ls -la"
 
 # Utils
-alias man="tldr"
-alias df="duf"
 alias open="xdg-open"
 alias tree="exa -T"
 alias :q="exit"
 alias zshrc="vim $ZDOTDIR/.zshrc"
-alias unimi="cd /home/gg/Dropbox/Università/Appunti/Magistrale"
-
-# Laravel sail
-# alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
-
-# # OCaML
-# test -r /home/gg/.opam/opam-init/init.zsh && . /home/gg/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-# alias ocaml="rlwrap ocaml"
-
-# # Composer
-# export PATH=$HOME/.config/composer/vendor/bin:$PATH
+alias unimi="cd /home/gg/Dropbox/Unimi/Appunti/Magistrale"
