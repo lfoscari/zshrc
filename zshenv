@@ -20,7 +20,3 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 if [ -e /home/gg/.nix-profile/etc/profile.d/nix.sh ]; then
 	. /home/gg/.nix-profile/etc/profile.d/nix.sh;
 fi
-
-# Opam
-[[ ! -r /home/gg/.opam/opam-init/init.zsh ]] || source /home/gg/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-. "$HOME/.cargo/env"
