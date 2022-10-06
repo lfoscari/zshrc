@@ -143,3 +143,7 @@ alias tree="exa -T"
 alias :q="exit"
 alias zshrc="vim $ZDOTDIR/.zshrc"
 alias unimi="cd /home/gg/Dropbox/Unimi/Appunti/Magistrale"
+
+# LAW
+alias nexus="ssh lfoscari@nexus.law.di.unimi.it"
+alias nexus-lf="ssh lfoscari@s2.law.di.unimi.it"
