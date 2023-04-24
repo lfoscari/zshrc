@@ -104,7 +104,7 @@ alias -s git="git clone"
 # ls settings
 export CLICOLOR=1
 alias ls="exa"
-alias l="ls -la"
+alias ll="ls -la"
 
 # cat settings
 export cat="bat"
