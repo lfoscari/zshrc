@@ -14,15 +14,6 @@ else
 	export PROMPT="%F{cyan}%2~%f %(#.#.→) "
 fi
 
-# ---------------------------------
-# Shell options
-
-# Enable command correction
-# setopt CORRECT
-
-# Enable argument correction
-# setopt CORRECT_ALL
-
 
 # ---------------------------------
 # Command History
@@ -121,7 +112,6 @@ export cat="bat"
 # Utils
 alias open="xdg-open"
 alias tree="exa -T"
-alias :q="exit"
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
 alias unimi="cd /home/gg/Dropbox/Unimi/Appunti/Magistrale"
 
