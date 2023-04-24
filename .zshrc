@@ -3,16 +3,15 @@
 # | . | . |
 # |_  |_  |
 # |___|___|
-#
+
 
 # ---------------------------------
 # Prompt
 
 if [[ ${SSH_TTY} ]] ; then
-	export PROMPT="(ssh) %F{cyan}%2~%f %(#.#.→) "
+	export PROMPT="($(hostname)) %F{cyan}%2~%f %(#.#.→) "
 else
 	export PROMPT="%F{cyan}%2~%f %(#.#.→) "
-	export RPROMPT="%F{red}%(?..ಠ_ಠ)%f"
 fi
 
 # ---------------------------------
@@ -57,23 +56,6 @@ setopt HIST_FIND_NO_DUPS
 
 # Removes blank lines from history
 setopt HIST_REDUCE_BLANKS
-
-
-# ---------------------------------
-# Directory history
-
-# Do not store duplicates in the stack
-setopt PUSHD_IGNORE_DUPS
-
-# Do not print the directory stack after pushd or popd
-setopt PUSHD_SILENT
-
-# Push the current directory visited on the stack
-setopt AUTO_PUSHD
-
-# Directory history
-alias d='dirs -v'
-for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 
 # ---------------------------------
@@ -123,11 +105,7 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold,underlin
 # MISC
 
 # Editor
-export EDITOR="nvim"
-alias vim="$EDITOR"
-
-# Open with
-alias -s ."*"=open
+export EDITOR="hx"
 
 # Automagically clone a repository
 alias -s git="git clone"
@@ -137,13 +115,20 @@ export CLICOLOR=1
 alias ls="exa"
 alias l="ls -la"
 
+# cat settings
+export cat="bat"
+
 # Utils
 alias open="xdg-open"
 alias tree="exa -T"
 alias :q="exit"
-alias zshrc="vim $ZDOTDIR/.zshrc"
+alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
 alias unimi="cd /home/gg/Dropbox/Unimi/Appunti/Magistrale"
 
-# LAW
-alias nexus="ssh lfoscari@nexus.law.di.unimi.it"
-alias nexus-lf="ssh lfoscari@s2.law.di.unimi.it"
+function law {
+	if [[ $1 == "" ]]; then
+		echo Provide a server name (e.g. sexus)
+	else
+		ssh lfoscari@$1.law.di.unimi.it
+	fi
+}
