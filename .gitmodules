@@ -10,3 +10,6 @@
 [submodule "zsh-history-substring-search"]
 	path = zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule "fzf-tab"]
+	path = fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab.git

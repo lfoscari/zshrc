@@ -25,7 +25,7 @@ HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=5000
 
 # Number of lines the history file stores
-SAVEHIST=2000
+SAVEHIST=20000
 
 # Share history across multiple zsh sessions
 setopt SHARE_HISTORY
@@ -78,19 +78,39 @@ compinit
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Colorized man pages
-source $ZDOTDIR/zsh-colored-man-pages/colored-man-pages.plugin.zsh
+# source $ZDOTDIR/zsh-colored-man-pages/colored-man-pages.plugin.zsh
 
 # Syntax highlight
-source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_STYLES[command]="none"
+# source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# ZSH_HIGHLIGHT_STYLES[command]="none"
 
 # History substring search
 source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold,underline"
 
+
+# Fuzzy find tab completion
+source $ZDOTDIR/fzf-tab/fzf-tab.plugin.zsh
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# switch group using `<` and `>`
+# zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # ---------------------------------
 # MISC
@@ -101,24 +121,13 @@ export EDITOR="hx"
 # Automagically clone a repository
 alias -s git="git clone"
 
-# ls settings
-export CLICOLOR=1
-alias ls="exa"
-alias ll="ls -la"
+# cd on steroids
+eval "$(zoxide init zsh)"
+alias cd="z"
 
-# cat settings
-export cat="bat"
+# ls for people with ADHD
+alias ls="eza"
 
 # Utils
 alias open="xdg-open"
-alias tree="exa -T"
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
-alias unimi="cd /home/gg/Dropbox/Unimi/Appunti/Magistrale"
-
-function law {
-	if [[ $1 == "" ]]; then
-		echo Provide a server name (e.g. sexus)
-	else
-		ssh lfoscari@$1.law.di.unimi.it
-	fi
-}
