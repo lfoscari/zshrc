@@ -8,10 +8,13 @@
 # ---------------------------------
 # Prompt
 
-if [[ ${SSH_TTY} ]] ; then
-	export PROMPT="($(hostname)) %F{cyan}%2~%f %(#.#.→) "
-else
-	export PROMPT="%F{cyan}%2~%f %(#.#.→) "
+export PROMPT="%F{cyan}%2~%f %(#.#.→) "
+export RPROMPT=""
+	
+if [[ ${SSH_TTY} ]]; then
+	export RPROMPT="$RPROMPT %F{green}<$(hostname)>%f"
+elif [[ ${IN_NIX_SHELL} ]]; then
+	export RPROMPT="$RPROMPT %F{blue}(nix)%f"
 fi
 
 
@@ -87,6 +90,9 @@ source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 # History substring search
 source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 
+# Nix starts with zsh instead of bash
+source $ZDOTDIR/nix-shell/nix-shell.plugin.zsh
+
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -116,7 +122,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # MISC
 
 # Editor
-export EDITOR="hx"
+alias hx="helix"
+export EDITOR="helix"
 
 # Automagically clone a repository
 alias -s git="git clone"
@@ -131,3 +138,4 @@ alias ls="eza"
 # Utils
 alias open="xdg-open"
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
+alias unimi="cd ~/Dropbox/Unimi/Dottorato/"
