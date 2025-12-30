@@ -90,7 +90,7 @@ source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 # History substring search
 source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-# Nix starts with zsh instead of bash
+# Starts Nix environments with zsh instead of bash
 source $ZDOTDIR/nix-shell/nix-shell.plugin.zsh
 
 bindkey '^[[A' history-substring-search-up
@@ -139,3 +139,10 @@ alias ls="eza"
 alias open="xdg-open"
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
 alias unimi="cd ~/Dropbox/Unimi/Dottorato/"
+
+# Load Nix environment automatically upon changing directory
+chpwd() {
+	if [[ -f shell.nix ]]; then
+		nix-shell
+	fi
+}
